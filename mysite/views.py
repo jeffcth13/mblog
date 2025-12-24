@@ -17,7 +17,7 @@ def homepage(request):
 def showpost(request, post_slug):
     try:
         post = Post.objects.get(slug=post_slug)
-        now = datetime.now()
+        # now = datetime.now()
         if post != None:
             return render(request, "post.html", locals())
     except:
