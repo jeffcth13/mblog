@@ -4,9 +4,24 @@
 {% block headmessage %}<h3 style="font-family: 標楷體;font-size: 22pt;">本站新聞列表</h3>{% endblock %}
 {% block content %}
 {% for post in posts %}
-    <p style="font-family: 微軟正黑體;font-size: 14pt;font-weight: bold;">
-        <a href="/post/{{post.slug}}">{{ post.title }}</a>
-    </p>
+    <div class="card">
+        <div class="card-header">
+            <p style="font-family: 微軟正黑體;font-size: 14pt;font-weight: bold;">
+                <a href="/post/{{post.slug}}">{{ post.title }}</a>
+            </p>
+        </div>
+        <div class="card-body" style="background-color: #ffffdd;">
+            <p>
+                {{ post.body | truncatechars:40 }}
+            </p>
+        </div>
+        <div class="card-footer" style="background-color: #efefef;">
+            <p>
+                發佈時間：{{ post.pub_date | date:"Y-m-d H:m:s" }}
+            </p>
+        </div>
+    </div>
+    <br>
 {% endfor %}
     <!-- <h3>現在時刻：{{ now }}</h3> -->
 {% endblock %}
